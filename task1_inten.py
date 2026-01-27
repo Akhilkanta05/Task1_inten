@@ -41,6 +41,25 @@ else:
     }
     df = pd.DataFrame(data)
 
+# Column Mapping
+st.subheader("Map Your Columns")
+columns = df.columns.tolist()
+age_col = st.selectbox("Select Age column", columns, index=columns.index("Age") if "Age" in columns else 0)
+income_col = st.selectbox("Select Annual Income column", columns, index=columns.index("Annual Income (k$)") if "Annual Income (k$)" in columns else 0)
+spending_col = st.selectbox("Select Spending Score column", columns, index=columns.index("Spending Score (1-100)") if "Spending Score (1-100)" in columns else 0)
+gender_options = ["None"] + columns
+gender_col = st.selectbox("Select Gender column (optional)", gender_options, index=gender_options.index("Gender") if "Gender" in gender_options else 0)
+
+# Rename columns
+rename_dict = {
+    age_col: "Age",
+    income_col: "Annual Income (k$)",
+    spending_col: "Spending Score (1-100)"
+}
+if gender_col != "None":
+    rename_dict[gender_col] = "Gender"
+df = df.rename(columns=rename_dict)
+
 st.write("First 5 Rows:")
 st.dataframe(df.head())
 
