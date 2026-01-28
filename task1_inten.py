@@ -44,8 +44,16 @@ st.set_page_config(
     page_title="Customer Segmentation Analytics",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    menu_items={
+        'About': "Customer Segmentation Dashboard v2.0"
+    }
 )
+
+# Mobile viewport configuration
+st.markdown("""
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+""", unsafe_allow_html=True)
 
 # ==============================================
 # PROFESSIONAL ENTERPRISE STYLING
@@ -499,11 +507,431 @@ st.markdown("""
     [data-testid="stTooltipHoverTarget"]:hover {
         transform: scale(1.05);
     }
+    
+    /* ===== MOBILE RESPONSIVE DESIGN ===== */
+    
+    /* Mobile: Tablets (768px and below) */
+    @media (max-width: 1024px) {
+        /* Sidebar adjustments */
+        [data-testid="stSidebar"] {
+            padding: 1.5rem 0.75rem;
+        }
+        
+        /* Dashboard header responsive */
+        .dashboard-title {
+            font-size: 2rem;
+        }
+        
+        .dashboard-subtitle {
+            font-size: 0.95rem;
+        }
+        
+        /* Section header responsive */
+        .section-header {
+            font-size: 1.25rem;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        /* Metric cards responsive */
+        [data-testid="stMetricValue"] {
+            font-size: 1.75rem;
+        }
+        
+        [data-testid="stMetricLabel"] {
+            font-size: 0.75rem;
+        }
+        
+        div[data-testid="stMetric"] {
+            padding: 1rem;
+        }
+        
+        /* Tabs responsive */
+        .stTabs [data-baseweb="tab"] {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+        }
+        
+        /* Buttons responsive */
+        .stButton > button,
+        .stDownloadButton > button {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.8rem;
+        }
+    }
+    
+    /* Mobile: Small screens (768px and below) */
+    @media (max-width: 768px) {
+        /* Auto collapse sidebar on mobile */
+        [data-testid="stSidebar"] {
+            padding: 1rem 0.5rem;
+        }
+        
+        /* Main content padding */
+        .main {
+            padding: 1rem 0.5rem;
+        }
+        
+        /* Dashboard header */
+        .dashboard-header {
+            padding: 2rem 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .dashboard-title {
+            font-size: 1.5rem;
+            line-height: 1.3;
+        }
+        
+        .dashboard-subtitle {
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        
+        /* Section headers */
+        .section-header {
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem 0;
+            padding-bottom: 0.5rem;
+        }
+        
+        /* Metric cards stack vertically */
+        div[data-testid="stMetric"] {
+            padding: 0.75rem;
+            margin: 0.25rem 0;
+        }
+        
+        [data-testid="stMetricValue"] {
+            font-size: 1.5rem;
+        }
+        
+        [data-testid="stMetricLabel"] {
+            font-size: 0.65rem;
+        }
+        
+        /* Tabs responsive */
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 0.25rem;
+            padding: 0.25rem;
+        }
+        
+        .stTabs [data-baseweb="tab"] {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.7rem;
+        }
+        
+        /* Buttons full width on mobile */
+        .stButton > button,
+        .stDownloadButton > button {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.75rem;
+            margin: 0.25rem 0;
+        }
+        
+        /* Expanders */
+        .streamlit-expanderHeader {
+            padding: 0.75rem;
+            font-size: 0.85rem;
+        }
+        
+        /* Dataframe responsive */
+        .dataframe {
+            font-size: 0.75rem !important;
+        }
+        
+        /* Select boxes and inputs */
+        .stSelectbox > div > div,
+        .stMultiSelect > div > div,
+        .stSlider > label {
+            font-size: 0.8rem;
+        }
+        
+        /* Plotly charts responsive */
+        .plotly-graph-div {
+            width: 100% !important;
+            height: auto !important;
+        }
+    }
+    
+    /* Mobile: Very small screens (480px and below) */
+    @media (max-width: 480px) {
+        /* Extreme mobile optimization */
+        .dashboard-header {
+            padding: 1.5rem 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .dashboard-title {
+            font-size: 1.25rem;
+        }
+        
+        .dashboard-subtitle {
+            font-size: 0.75rem;
+        }
+        
+        /* Minimal spacing */
+        .section-header {
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+        
+        /* Single column layout for metrics */
+        [data-testid="stColumn"] {
+            width: 100% !important;
+        }
+        
+        /* Text size adjustments */
+        [data-testid="stMetricValue"] {
+            font-size: 1.25rem;
+        }
+        
+        /* Compact expanders */
+        .streamlit-expanderHeader {
+            padding: 0.5rem;
+        }
+        
+        /* Compact tabs */
+        .stTabs [data-baseweb="tab"] {
+            padding: 0.4rem 0.6rem;
+            font-size: 0.65rem;
+        }
+        
+        /* No animations on mobile for performance */
+        * {
+            animation: none !important;
+        }
+    }
+    
+    /* Touch-friendly adjustments for all mobile devices */
+    @media (hover: none) and (pointer: coarse) {
+        /* Larger touch targets */
+        .stButton > button,
+        .stDownloadButton > button {
+            min-height: 44px;
+        }
+        
+        /* Remove hover effects (use active instead) */
+        .stButton > button:hover,
+        .stDownloadButton > button:hover {
+            transform: none;
+        }
+        
+        .stButton > button:active,
+        .stDownloadButton > button:active {
+            transform: scale(0.98);
+        }
+        
+        /* Larger clickable areas */
+        [data-testid="stSelectbox"],
+        [data-testid="stMultiSelect"],
+        [data-testid="stRadio"],
+        [data-testid="stCheckbox"] {
+            padding: 0.5rem 0;
+        }
+    }
+    
+    /* Landscape orientation adjustments */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .dashboard-header {
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dashboard-title {
+            font-size: 1.25rem;
+        }
+        
+        .section-header {
+            margin: 0.75rem 0 0.5rem 0;
+        }
+    }
+    
+    /* ===== MOBILE MENU TOGGLE ===== */
+    
+    /* Hamburger menu button */
+    .mobile-menu-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 999;
+        display: none;
+        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        font-size: 1.25rem;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+    
+    .mobile-menu-button:active {
+        transform: scale(0.95);
+    }
+    
+    /* Show menu button on mobile */
+    @media (max-width: 768px) {
+        .mobile-menu-button {
+            display: block;
+        }
+        
+        /* Add margin to main content when sidebar is visible */
+        .main.sidebar-open {
+            margin-left: 0;
+        }
+    }
+    
+    /* Mobile menu overlay (darker background when menu is open) */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 998;
+    }
+    
+    .mobile-menu-overlay.show {
+        display: block;
+    }
+    
+    /* Sidebar positioning for mobile */
+    @media (max-width: 768px) {
+        [data-testid="stSidebar"] {
+            position: fixed;
+            left: -100%;
+            top: 0;
+            height: 100vh;
+            width: 75vw;
+            max-width: 300px;
+            z-index: 1000;
+            overflow-y: auto;
+            transition: left 0.3s ease;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        [data-testid="stSidebar"].show {
+            left: 0;
+        }
+    }
+    
     </style>
 """, unsafe_allow_html=True)
 
+# Mobile menu toggle JavaScript
+st.markdown("""
+    <script>
+    // Wait for Streamlit to be ready
+    function setupMobileMenu() {
+        // Get sidebar and main elements
+        const sidebar = document.querySelector('[data-testid="stSidebar"]');
+        const main = document.querySelector('.main');
+        
+        if (!sidebar) return; // Wait for sidebar to load
+        
+        // Create overlay element
+        let overlay = document.querySelector('.mobile-menu-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'mobile-menu-overlay';
+            document.body.appendChild(overlay);
+        }
+        
+        // Create menu button
+        let menuBtn = document.querySelector('.mobile-menu-button');
+        if (!menuBtn) {
+            menuBtn = document.createElement('button');
+            menuBtn.className = 'mobile-menu-button';
+            menuBtn.innerHTML = '☰ Menu';
+            menuBtn.onclick = toggleMobileMenu;
+            document.body.appendChild(menuBtn);
+        }
+        
+        // Toggle menu function
+        function toggleMobileMenu() {
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+            document.body.style.overflow = sidebar.classList.contains('show') ? 'hidden' : 'auto';
+        }
+        
+        // Close menu when clicking overlay
+        overlay.onclick = function() {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        };
+        
+        // Close menu when clicking a link in sidebar
+        const sidebarLinks = sidebar.querySelectorAll('a, button');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('show');
+                    overlay.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+    
+    // Setup menu when page loads
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupMobileMenu);
+    } else {
+        setupMobileMenu();
+    }
+    
+    // Retry setup if sidebar not found yet
+    setTimeout(setupMobileMenu, 500);
+    setTimeout(setupMobileMenu, 1000);
+    setTimeout(setupMobileMenu, 2000);
+    </script>
+""", unsafe_allow_html=True)
+
 # ==============================================
-# UTILITY FUNCTIONS (SAME AS BEFORE)
+# RESPONSIVE LAYOUT HELPER
+# ==============================================
+
+def get_responsive_columns(num_cols):
+    """
+    Get responsive column layout based on screen size.
+    Returns adjusted number of columns for mobile devices.
+    """
+    # On mobile (detected by window width), reduce columns
+    # Default to full width on very small screens
+    if num_cols >= 4:
+        return 2  # 4 columns -> 2 on tablet, 1 on mobile
+    elif num_cols == 3:
+        return 1  # 3 columns -> 1 on mobile
+    else:
+        return num_cols  # Keep 1-2 columns as is
+
+def responsive_columns(num_cols):
+    """
+    Create responsive columns that adapt to screen size.
+    Use with: cols = responsive_columns(4)
+    """
+    # For mobile optimization, we'll use Streamlit's native columns
+    # and let CSS media queries handle the responsive behavior
+    return st.columns(num_cols)
+
+# ==============================================
+# UTILITY FUNCTIONS
+
 # ==============================================
 
 @st.cache_data(ttl=3600)
